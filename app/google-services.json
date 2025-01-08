@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "337908939656",
+    "project_id": "pam-firebase-10c06",
+    "storage_bucket": "pam-firebase-10c06.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:337908939656:android:bb71f782a083fdd94a583d",
+        "android_client_info": {
+          "package_name": "com.example.prak10firebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRpyRLswAHpQnAIq8i6N3yQSvV6NXxxCU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
