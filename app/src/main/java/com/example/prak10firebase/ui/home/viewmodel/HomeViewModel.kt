@@ -23,3 +23,22 @@ class HomeViewModel (
         getMhs()
     }
 
+    fun getMhs(){
+        viewModelScope.launch {
+            repositoryMhs.getAllMhs()
+                .onStart {
+                    mhsUiState = HomeuiState.Loading
+                }
+                .catch {
+                    mhsUiState = HomeuiState.Error(e = it)
+                }
+                .collect{
+                    mhsUiState = if (it.isEmpty()){
+                        HomeuiState.Error(Exception("Belum ada data mahasiswa"))
+                    } else{
+                        HomeuiState.Succes(it)
+                    }
+                }
+        }
+    }
+
