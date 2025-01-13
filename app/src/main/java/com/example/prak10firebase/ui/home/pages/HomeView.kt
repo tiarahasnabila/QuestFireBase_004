@@ -120,6 +120,9 @@ fun HomeStatus(
             message = homeUiState.e.message ?: "Error")
     }
 }
-
+@Composable
+fun OnLoading(modifier: Modifier = Modifier) {
+    Text("Loading .......")
+}
 
 
