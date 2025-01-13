@@ -43,6 +43,29 @@ import com.example.prak10firebase.ui.PenyediaViewModel
 import com.example.prak10firebase.ui.home.viewmodel.HomeViewModel
 import com.example.prak10firebase.ui.home.viewmodel.HomeuiState
 
+
+@Composable
+private fun DeleteConfirmationDialog(
+    onDeleteConfirm: () -> Unit,
+    onDeleteCancel: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    AlertDialog(onDismissRequest = { },
+        title = { Text("Delete Data") },
+        text = { Text("Apakah anda yakin ingin menghapus data?") },
+        modifier = modifier,
+        dismissButton = {
+            TextButton(onClick = onDeleteCancel) {
+                Text(text = "Cancel")
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = onDeleteConfirm) {
+                Text(text = "Yes")
+            }
+        }
+    )
+}
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen(
@@ -52,7 +75,6 @@ fun HomeScreen(
     viewModel: HomeViewModel = viewModel(factory = PenyediaViewModel.Factory)
 
 ){
-    val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
     Scaffold (
         modifier = modifier,
         topBar = {
@@ -68,7 +90,7 @@ fun HomeScreen(
                 shape = MaterialTheme.shapes.medium,
                 modifier = Modifier.padding(18.dp)
             ){
-                Icon(imageVector = Icons.Default.Add, contentDescription = "Add Kontak")
+                Icon(imageVector = Icons.Default.Add, contentDescription = "Add Mahasiswa")
             }
         },
     ){ innerPadding ->
@@ -122,7 +144,13 @@ fun HomeStatus(
 }
 @Composable
 fun OnLoading(modifier: Modifier = Modifier) {
-    Text("Loading .......")
+    Column  (
+        modifier = modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ){
+        Text("Loading....")
+    }
 }
 
 
@@ -171,7 +199,7 @@ fun MhsLayout(
                         .fillMaxWidth()
                         .clickable {},
                     onDeleteClick = {
-                        onDeleteClick(mhs)
+                        onDeleteClick(it)
                     }
                 )
             }
@@ -225,24 +253,5 @@ fun MhsCard(
         }
     }
 }
-@Composable
-private fun DeleteConfirmationDialog(
-    onDeleteConfirm: () -> Unit, onDeleteCancel: () -> Unit, modifier: Modifier = Modifier
-) {
-    AlertDialog(onDismissRequest = { /* Do nothing */ },
-        title = { Text("Delete Data") },
-        text = { Text("Apakah anda yakin ingin menghapus data?") },
-        modifier = modifier,
-        dismissButton = {
-            TextButton(onClick = onDeleteCancel) {
-                Text(text = "Cancel")
-            }
-        },
-        confirmButton = {
-            TextButton(onClick = onDeleteConfirm) {
-                Text(text = "Yes")
-            }
-        }
-    )
-}
+
 
