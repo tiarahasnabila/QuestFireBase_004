@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.prak10firebase.navigation.PengelolaHalaman
 import com.example.prak10firebase.ui.home.pages.HomeScreen
 import com.example.prak10firebase.ui.theme.Prak10FirebaseTheme
 
@@ -21,9 +22,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             Prak10FirebaseTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    HomeScreen(
+                    PengelolaHalaman(
                         modifier = Modifier.padding(innerPadding),
-                        navigateToltemEntry = {}
                     )
                 }
             }
