@@ -150,4 +150,99 @@ fun OnError(
     }
 }
 
+@Composable
+fun MhsLayout(
+    mahasiswa: List<Mahasiswa>,
+    modifier: Modifier = Modifier,
+    onDetailClick: (String) -> Unit,
+    onDeleteClick: (Mahasiswa) -> Unit = {}
+) {
+    LazyColumn(
+        modifier = modifier,
+        contentPadding = PaddingValues(16.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
+        items(
+            items = mahasiswa,
+            itemContent = { mhs ->
+                MhsCard(
+                    mahasiswa = mhs,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable {},
+                    onDeleteClick = {
+                        onDeleteClick(mhs)
+                    }
+                )
+            }
+        )
+    }
+}
+
+@Composable
+fun MhsCard(
+    mahasiswa: Mahasiswa,
+    modifier: Modifier = Modifier,
+    onDeleteClick: (Mahasiswa) -> Unit = {}
+) {
+    Card (
+        modifier = modifier,
+        shape = MaterialTheme.shapes.medium,
+        elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
+    ) {
+        Column(
+            modifier = Modifier.padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            Row (
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = mahasiswa.nama,
+                    style = MaterialTheme.typography.titleLarge
+                )
+                Spacer(Modifier.weight(1f))
+                IconButton(onClick = { onDeleteClick(mahasiswa) }) {
+                    Icon(
+                        imageVector = Icons.Default.Delete,
+                        contentDescription = null,
+                    )
+                }
+                Text(
+                    text = mahasiswa.nim,
+                    style = MaterialTheme.typography.titleMedium
+                )
+            }
+            Text(
+                text = mahasiswa.kelas,
+                style = MaterialTheme.typography.titleMedium
+            )
+            Text(
+                text = mahasiswa.alamat,
+                style = MaterialTheme.typography.titleMedium
+            )
+        }
+    }
+}
+@Composable
+private fun DeleteConfirmationDialog(
+    onDeleteConfirm: () -> Unit, onDeleteCancel: () -> Unit, modifier: Modifier = Modifier
+) {
+    AlertDialog(onDismissRequest = { /* Do nothing */ },
+        title = { Text("Delete Data") },
+        text = { Text("Apakah anda yakin ingin menghapus data?") },
+        modifier = modifier,
+        dismissButton = {
+            TextButton(onClick = onDeleteCancel) {
+                Text(text = "Cancel")
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = onDeleteConfirm) {
+                Text(text = "Yes")
+            }
+        }
+    )
+}
 
