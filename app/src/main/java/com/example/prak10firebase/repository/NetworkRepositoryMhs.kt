@@ -21,4 +21,18 @@ class NetworkRepositoryMhs(
             )
         }
     }
-
+    override fun getAllMhs(): Flow<List<Mahasiswa>> = callbackFlow{
+        val mhscollection = firestore.collection("Mahasiswa")
+            .orderBy("nim", Query.Direction.ASCENDING)
+            .addSnapshotListener{value, error ->
+                if(value != null){
+                    val mhsList = value.documents.mapNotNull {
+                        it.toObject(Mahasiswa::class.java)
+                    }
+                    trySend(mhsList)
+                }
+            }
+        awaitClose {
+            mhscollection.remove()
+        }
+    }
