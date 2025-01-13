@@ -20,3 +20,18 @@ class InsertViewModel (
             insertUiEvent = mahasiswaEvent,
         )
     }
+
+    fun validateFields(): Boolean{
+        val event = uiEvent.insertUiEvent
+        val errorState = FormErrorState(
+            nim = if (event.nim.isEmpty()) "NIM Tidak Boleh Kosong" else null,
+            nama = if (event.nama.isEmpty()) "Nama Tidak Boleh Kosong" else null,
+            alamat = if (event.alamat.isEmpty()) "Alamat Tidak Boleh Kosong" else null,
+            jenisKelamin = if (event.jenisKelamin.isEmpty()) "Jenis Kelamin Tidak Boleh Kosong" else null,
+            kelas = if (event.kelas.isEmpty()) "Kelas Tidak Boleh Kosong" else null,
+            angkatan = if (event.angkatan.isEmpty()) "Angkatan Tidak Boleh Kosong" else null
+        )
+
+        uiEvent = uiEvent.copy(isEntryValid = errorState)
+        return errorState.isValid()
+    }
