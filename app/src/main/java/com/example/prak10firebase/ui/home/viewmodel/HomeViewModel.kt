@@ -51,5 +51,10 @@ class HomeViewModel (
         }
     }
 }
+sealed class HomeuiState{
+    object Loading: HomeuiState()
+    data class Succes(val data: List<Mahasiswa>) : HomeuiState()
+    data class Error(val e:Throwable):HomeuiState()
+}
 
 
