@@ -3,6 +3,6 @@ Tampilan ketika insert mahasiswa ratna ![insertmhs](https://github.com/user-atta
 Tampilan Home setelah input data ![halamandatasetelahinput](https://github.com/user-attachments/assets/edfcf653-413a-463c-b760-ae816ee67ca5)
 
 Saat Ucp masih ada eror seperti ini di file insertMhsView,DetailViewModel,InsertViewModel 
-![Uploading Screenshot 2025-01-15 170340.png…]()
+![Screenshot 2025-01-15 170340](https://github.com/user-attachments/assets/88782e45-c89b-4057-9a57-37eb33bfc812)
 
 
