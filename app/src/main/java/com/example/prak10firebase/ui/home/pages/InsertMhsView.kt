@@ -301,5 +301,82 @@ fun FormMahasiswa(
             text = errorState.angkatan ?: "",
             color = Color.Red
         )
+
+        OutlinedTextField(
+            modifier = Modifier.fillMaxWidth(),
+            value = mahasiswaEvent.judulskripsi,
+            onValueChange = { onValueChange(mahasiswaEvent.copy(judulskripsi = it)) },
+            label = { Text(text = "Judul Skripsi") },
+            isError = errorState.judulskripsi != null,
+            placeholder = { Text(text = "Masukkan Judul Skripsi") },
+            leadingIcon = {
+                Icon(
+                    imageVector = Icons.Default.Person,
+                    contentDescription = "Person Icon"
+                )
+            }
+        )
+        Text(
+            text = errorState.judulskripsi ?: "",
+            color = Color.Red
+        )
+
+        OutlinedTextField(
+            modifier = Modifier.fillMaxWidth(),
+            value = mahasiswaEvent.judulskripsi,
+            onValueChange = { onValueChange(mahasiswaEvent.copy(judulskripsi = it)) },
+            label = { Text(text = "Judul Skripsi") },
+            isError = errorState.judulskripsi != null,
+            placeholder = { Text(text = "Masukkan Judul Skripsi") },
+            leadingIcon = {
+                Icon(
+                    imageVector = Icons.Default.Person,
+                    contentDescription = "Person Icon"
+                )
+            }
+        )
+        Text(
+            text = errorState.judulskripsi ?: "",
+            color = Color.Red
+        )
+
+        OutlinedTextField(
+            modifier = Modifier.fillMaxWidth(),
+            value = mahasiswaEvent.DosenPembimbing1,
+            onValueChange = { onValueChange(mahasiswaEvent.copy(DosenPembimbing1 = it)) },
+            label = { Text(text = "Dosen Pembimbing 1") },
+            isError = errorState.DosenPembimbing1 != null,
+            placeholder = { Text(text = "Masukkan Dosen Pembimbing 1 ") },
+            leadingIcon = {
+                Icon(
+                    imageVector = Icons.Default.Person,
+                    contentDescription = "Person Icon"
+                )
+            }
+        )
+        Text(
+            text = errorState.DosenPembimbing1 ?: "",
+            color = Color.Red
+        )
+
+        OutlinedTextField(
+            modifier = Modifier.fillMaxWidth(),
+            value = mahasiswaEvent.DosenPembimbing2,
+            onValueChange = { onValueChange(mahasiswaEvent.copy(DosenPembimbing2 = it)) },
+            label = { Text(text = "Dosen Pembimbing 2") },
+            isError = errorState.DosenPembimbing2 != null,
+            placeholder = { Text(text = "Masukkan Dosen Pembimbing 2") },
+            leadingIcon = {
+                Icon(
+                    imageVector = Icons.Default.Person,
+                    contentDescription = "Person Icon"
+                )
+            }
+        )
+        Text(
+            text = errorState.DosenPembimbing2 ?: "",
+            color = Color.Red
+        )
+
     }
 }
